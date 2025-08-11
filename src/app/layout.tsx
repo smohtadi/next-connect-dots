@@ -13,7 +13,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Connect Dots - Game",
+  title: "Dots",
   description: "A fun and interactive game to connect the dots",
 };
 

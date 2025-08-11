@@ -39,9 +39,9 @@ export default function Landing() {
           src="/logo.png"
           width={54}
           height={54}
-          alt="Connect Dots logo"
+          alt="Dots logo"
         />
-      <Title className="text-center">Connect Dots</Title>
+      <Title className="text-center">Dots</Title>
       </div>
       <p className="mb-6 text-sm">
         Enter a room id to join a room or create a new one by clicking

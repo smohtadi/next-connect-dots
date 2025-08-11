@@ -22,7 +22,7 @@ export default function Game({ roomId }: { roomId: string }) {
 
   return (
     <article className="flex flex-col place-items-center py-4">
-      <Title className="mb-4">Connect Dots</Title>
+      <Title className="mb-4">Dots</Title>
       <div className="mb-4 flex items-center gap-3">
       <Subtitle>
         Welcome <span className="font-semibold">Player {player}</span>
