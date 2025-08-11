@@ -8,7 +8,7 @@ import { Button } from "@/components/ui/button";
 import Title from "@/components/ui/title";
 import ErrorBanner from "@/components/ui/error-banner";
 import Image from "next/image";
-
+const API_URL = process.env.NEXT_PUBLIC_SERVER_API_URL;
 export default function Landing() {
   const router = useRouter();
   const [error, setError] = useState<string | null>(null);
@@ -26,10 +26,15 @@ export default function Landing() {
   };
 
   const handleCreate = async () => {
-    const roomId = await createRoom().catch(() =>
-      setError("Failed to create room")
-    );
-    if (roomId) router.push(`/game/${roomId}`);
+    try {
+      const res = await fetch(`${API_URL}/api/create-room`, { method: "POST" });
+      const data = await res.json();
+      const roomId = data.roomId;
+      if (roomId) router.push(`/game/${roomId}`);
+    } catch (error) {
+      console.error("Error creating room:", error);
+      setError("Failed to create room");
+    }
   };
 
   return (
