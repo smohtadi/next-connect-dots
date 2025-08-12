@@ -20,19 +20,26 @@ export default function Game({ roomId }: { roomId: string }) {
     setTimerKey((p) => p + 1);
   };
 
+  const handleClickShare = () => {
+    navigator.clipboard.writeText(window.location.href);
+    alert("Link copied to clipboard.");
+  };
+
   return (
     <article className="flex flex-col place-items-center py-4">
-      <Title className="mb-4">Dots</Title>
-      <div className="mb-4 flex items-center gap-3">
-      <Subtitle>
+      <Title className="mb-3">Dots</Title>
+      <p className="mb-1">
         Welcome <span className="font-semibold">Player {player}</span>
-      </Subtitle>
-      <div>
-      <Button variant="destructive" onClick={leaveRoom}>
-        <LogOut size={12} />
-        Leave
-      </Button>
-      </div>
+      </p>
+      <p className="text-sm text-muted-foreground mb-2">Room ID: {roomId}</p>
+      <div className="flex gap-2 mb-4">
+        <Button variant="outline" onClick={handleClickShare}>
+          Share URL
+        </Button>
+        <Button variant="destructive" onClick={leaveRoom}>
+          <LogOut size={12} />
+          Leave
+        </Button>
       </div>
       <ErrorBanner message={error} className="mt-2" />
       <Play
