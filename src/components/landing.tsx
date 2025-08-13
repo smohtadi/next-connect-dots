@@ -1,7 +1,6 @@
 "use client";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { createRoom } from "@/server/actions/game-actions";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
@@ -12,29 +11,33 @@ const API_URL = process.env.NEXT_PUBLIC_SERVER_API_URL;
 export default function Landing() {
   const router = useRouter();
   const [error, setError] = useState<string | null>(null);
+  const [loading, setLoading] = useState<boolean>(false);
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
     const roomId = formData.get("room-id");
-    if (roomId && typeof roomId === "string" && roomId.trim().length > 3) {
-      router.push(`/game/${roomId}`);
-      setError(null);
-    } else {
-      setError("Please enter a valid Room ID");
+    if (typeof roomId !== "string" || !/^[a-zA-Z0-9_-]{3,}$/.test(roomId)) {
+      setError("Invalid Room ID format");
+      return;
     }
+    router.push(`/game/${roomId}`);
+    setError(null);
   };
 
   const handleCreate = async () => {
+    setLoading(true);
     try {
       const res = await fetch(`${API_URL}/api/create-room`, { method: "POST" });
       const data = await res.json();
       const roomId = data.roomId;
+      setError(null);
       if (roomId) router.push(`/game/${roomId}`);
     } catch (error) {
       console.error("Error creating room:", error);
       setError("Failed to create room");
     }
+    setLoading(false);
   };
 
   return (
@@ -70,8 +73,8 @@ export default function Landing() {
             Or
           </span>
         </form>
-        <Button variant="default" className="w-full" onClick={handleCreate}>
-          Create Room
+        <Button disabled={loading} variant="default" className="w-full" onClick={handleCreate}>
+          { loading ? "Creating..." : "Create Room" }
         </Button>
       </div>
     </div>
