@@ -52,6 +52,7 @@ export default function Square({
           className={cn(
             "bg-transparent border-0 absolute z-40 transition-all p-0 disabled:opacity-100",
             "h-4 w-[80%] my-0 mx-[10%]",
+            "hover:bg-secondary",
             "top-[-0.5rem]",
             {
               "bg-teal-500": borders[0] === 1,
@@ -60,7 +61,19 @@ export default function Square({
           )}
           disabled={borders[0] !== 0 || disabled}
           onClick={() => onClickBorder(x, y, 0)}
-        ></Button>
+        >
+          {borders[0] >= 1 && (
+            <i
+              style={{
+                ["--color-sprinkle" as string]:
+                  borders[0] === 1
+                    ? "oklch(70.4% 0.14 182.503)"
+                    : "oklch(65.6% 0.241 354.308)",
+              }}
+              className="btn-sprinkle"
+            />
+          )}
+        </Button>
       )}
       {showRight && (
         <Button
@@ -68,6 +81,7 @@ export default function Square({
             "bg-transparent border-0 absolute z-40 transition-all p-0 disabled:opacity-100",
             "h-[80%] w-4 my-[10%] mx-0",
             "right-[-0.5rem]",
+            "hover:bg-secondary",
             {
               "bg-teal-500": borders[1] === 1,
               "bg-pink-500": borders[1] === 2,
@@ -75,7 +89,19 @@ export default function Square({
           )}
           disabled={borders[1] !== 0 || disabled}
           onClick={() => onClickBorder(x, y, 1)}
-        ></Button>
+        >
+          {borders[1] >= 1 && (
+            <i
+              style={{
+                ["--color-sprinkle" as string]:
+                  borders[1] === 1
+                    ? "oklch(70.4% 0.14 182.503)"
+                    : "oklch(65.6% 0.241 354.308)",
+              }}
+              className="btn-sprinkle"
+            />
+          )}
+        </Button>
       )}
       {showBottom && (
         <Button
@@ -83,6 +109,7 @@ export default function Square({
             "bg-transparent border-0 absolute z-40 transition-all p-0 disabled:opacity-100",
             "h-4 w-[80%] my-0 mx-[10%]",
             "bottom-[-0.5rem]",
+            "hover:bg-secondary",
             {
               "bg-teal-500": borders[2] === 1,
               "bg-pink-500": borders[2] === 2,
@@ -90,7 +117,19 @@ export default function Square({
           )}
           disabled={borders[2] !== 0 || disabled}
           onClick={() => onClickBorder(x, y, 2)}
-        ></Button>
+        >
+          {borders[2] >= 1 && (
+            <i
+              style={{
+                ["--color-sprinkle" as string]:
+                  borders[2] === 1
+                    ? "oklch(70.4% 0.14 182.503)"
+                    : "oklch(65.6% 0.241 354.308)",
+              }}
+              className="btn-sprinkle"
+            />
+          )}
+        </Button>
       )}
       {showLeft && (
         <Button
@@ -98,6 +137,7 @@ export default function Square({
             "bg-transparent border-0 absolute z-40 transition-all p-0 disabled:opacity-100",
             "h-[80%] w-4 my-[10%] mx-0",
             "left-[-0.5rem]",
+            "hover:bg-secondary",
             {
               "bg-teal-500": borders[3] === 1,
               "bg-pink-500": borders[3] === 2,
@@ -105,7 +145,19 @@ export default function Square({
           )}
           disabled={borders[3] !== 0 || disabled}
           onClick={() => onClickBorder(x, y, 3)}
-        ></Button>
+        >
+          {borders[3] >= 1 && (
+            <i
+              style={{
+                ["--color-sprinkle" as string]:
+                  borders[3] === 1
+                    ? "oklch(70.4% 0.14 182.503)"
+                    : "oklch(65.6% 0.241 354.308)",
+              }}
+              className="btn-sprinkle"
+            />
+          )}
+        </Button>
       )}
     </div>
   );
