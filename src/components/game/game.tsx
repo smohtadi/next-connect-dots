@@ -4,7 +4,6 @@ import useGame from "@/hooks/use-game";
 import Board from "@/components/game/board";
 import ScoreBoard from "@/components/game/score-board";
 import Title from "@/components/ui/title";
-import Subtitle from "@/components/ui/subtitle";
 import ErrorBanner from "@/components/ui/error-banner";
 import Loader from "@/components/ui/loader";
 import type { IRoom } from "@/types";
@@ -27,7 +26,7 @@ export default function Game({ roomId }: { roomId: string }) {
 
   return (
     <article className="flex flex-col place-items-center py-4">
-      <Title className="mb-3">Dots</Title>
+      <Title className="mb-3">: : Dots</Title>
       <p className="mb-1">
         Welcome <span className="font-semibold">Player {player}</span>
       </p>

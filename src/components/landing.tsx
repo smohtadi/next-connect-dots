@@ -43,13 +43,13 @@ export default function Landing() {
   return (
     <div className="w-full max-w-md p-8 rounded-xl shadow-lg animate-fade-in">
       <div className="flex justify-center items-center mb-4 gap-1">
-      <Image
+      {/* <Image
           src="/logo.png"
           width={54}
           height={54}
           alt="Dots logo"
-        />
-      <Title className="text-center">Dots</Title>
+        /> */}
+      <Title className="text-center">: : Dots</Title>
       </div>
       <p className="mb-6 text-sm">
         Enter a room id to join a room or create a new one by clicking
@@ -73,7 +73,7 @@ export default function Landing() {
             Or
           </span>
         </form>
-        <Button disabled={loading} variant="default" className="w-full" onClick={handleCreate}>
+        <Button disabled={loading} variant="default" className="w-full primary-shadow" onClick={handleCreate}>
           { loading ? "Creating..." : "Create Room" }
         </Button>
       </div>
